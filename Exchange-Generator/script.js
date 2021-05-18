@@ -7,14 +7,14 @@ fetch('https://api.exchangerate-api.com/v4/latest/EUR')
             const rates = rate.rates;
             const nameValues = Object.getOwnPropertyNames(rates);
             const values = Object.values(rates);
-            const option = document.createElement('option');
-            option.textContent = nameValues[0];
-            firstSelector.appendChild(option);
+            const euro = document.createElement('option');
+            euro.textContent = nameValues[0];
+            firstSelector.appendChild(euro);
 
             for(let i = 0; i < nameValues.length; i++) { 
-                const option2 = document.createElement('option');
-                option2.textContent = nameValues[i];
-                secondSelector.appendChild(option2);
+                const secondOption = document.createElement('option');
+                secondOption.textContent = nameValues[i];
+                secondSelector.appendChild(secondOption);
             }
 
             for (let i = 0; i < values.length; i++) {
@@ -24,13 +24,13 @@ fetch('https://api.exchangerate-api.com/v4/latest/EUR')
             }
 
             const convert = document.getElementsByTagName('button');
-            const input1 = document.querySelector('#inputs input:first-of-type');
-            const input2 = document.querySelector('#inputs input:nth-of-type(2)');
-            input1.value = values[0];
+            const firstInput = document.querySelector('#inputs input:first-of-type');
+            const secondInput = document.querySelector('#inputs input:nth-of-type(2)');
+            firstInput.value = values[0];
 
             convert[0].addEventListener('click', function(e){
                 e.preventDefault();
                 const selectedValue = secondSelector[secondSelector.selectedIndex].value;
-                input2.value = input1.value * selectedValue;
+                secondInput.value = firstInput.value * selectedValue;
             })
         });

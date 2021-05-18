@@ -33,4 +33,5 @@ fetch('https://api.exchangerate-api.com/v4/latest/EUR')
                 const selectedValue = secondSelector[secondSelector.selectedIndex].value;
                 secondInput.value = firstInput.value * selectedValue;
             })
-        });
+        })
+        .catch(error => {console.log('error', error)}); 

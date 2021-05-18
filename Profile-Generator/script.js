@@ -11,4 +11,5 @@ fetch('https://reqres.in/api/users')
             profileName[i].textContent = `${user.data[i].first_name} ${user.data[i].last_name}`;
             profileEmail[i].textContent = user.data[i].email;
         }
-});
+    })
+    .catch(error => {console.log('error', error)}); 
